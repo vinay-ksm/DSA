@@ -240,45 +240,220 @@ internal class DoublyLinkedListTest {
 
   //<editor-fold desc="remove() related tests">
   @Test
-  fun `remove head`(){
+  fun `remove head`() {
     val dll = DoublyLinkedList(1)
     dll.append(2)
     dll.append(3)
     val result = dll.remove(0)!!
-    Assertions.assertEquals(1,result.value)
-    Assertions.assertEquals(2,dll.head?.value)
-    Assertions.assertEquals(2,dll.listLength)
+    Assertions.assertEquals(1, result.value)
+    Assertions.assertEquals(2, dll.head?.value)
+    Assertions.assertEquals(2, dll.listLength)
   }
 
   @Test
-  fun `remove tail`(){
+  fun `remove tail`() {
     val dll = DoublyLinkedList(1)
     dll.append(2)
     dll.append(3)
     val result = dll.remove(2)!!
-    Assertions.assertEquals(3,result.value)
-    Assertions.assertEquals(2,dll.tail?.value)
-    Assertions.assertEquals(2,dll.listLength)
+    Assertions.assertEquals(3, result.value)
+    Assertions.assertEquals(2, dll.tail?.value)
+    Assertions.assertEquals(2, dll.listLength)
   }
 
   @Test
-  fun `remove middle`(){
+  fun `remove middle`() {
     val dll = DoublyLinkedList(1)
     dll.append(2)
     dll.append(3)
     val result = dll.remove(1)!!
-    Assertions.assertEquals(2,result.value)
-    Assertions.assertEquals(2,dll.listLength)
+    Assertions.assertEquals(2, result.value)
+    Assertions.assertEquals(2, dll.listLength)
   }
 
   @Test
-  fun `remove out of range`(){
+  fun `remove out of range`() {
     val dll = DoublyLinkedList(1)
     dll.append(2)
     dll.append(3)
     val result = dll.remove(3)
     Assertions.assertNull(result)
-    Assertions.assertEquals(3,dll.listLength)
+    Assertions.assertEquals(3, dll.listLength)
   }
   //</editor-fold>
+
+  //<editor-fold desc="swapFirstAndLast() related tests">
+  @Test
+  fun `more than 2 nodes in the list`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    dll.append(5)
+    val result = dll.swapFirstAndLast()
+    Assertions.assertTrue(result)
+    Assertions.assertEquals(5, dll.head?.value)
+    Assertions.assertEquals(1, dll.tail?.value)
+  }
+
+  @Test
+  fun `exactly 2 nodes in the list`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    val result = dll.swapFirstAndLast()
+    Assertions.assertTrue(result)
+    Assertions.assertEquals(2, dll.head?.value)
+    Assertions.assertEquals(1, dll.tail?.value)
+  }
+
+  @Test
+  fun `exactly 1 node in the list`() {
+    val dll = DoublyLinkedList(1)
+    val result = dll.swapFirstAndLast()
+    Assertions.assertFalse(result)
+    Assertions.assertEquals(1, dll.head?.value)
+    Assertions.assertEquals(1, dll.tail?.value)
+  }
+
+  @Test
+  fun `exactly no nodes in the list`() {
+    val dll = DoublyLinkedList(null)
+    val result = dll.swapFirstAndLast()
+    Assertions.assertFalse(result)
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="reverse() related tests">
+  @Test
+  fun `when more than 2 nodes are in list`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(4)
+    dll.append(5)
+    dll.reverse()
+    Assertions.assertArrayEquals(intArrayOf(5, 4, 3, 2, 1), dll.toArray())
+  }
+
+  @Test
+  fun `when there are exactly 2 nodes are in list`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.reverse()
+    Assertions.assertArrayEquals(intArrayOf(2, 1), dll.toArray())
+  }
+
+  @Test
+  fun `when there is exactly 1 nodes are in list`() {
+    val dll = DoublyLinkedList(1)
+    dll.reverse()
+    Assertions.assertArrayEquals(intArrayOf(1), dll.toArray())
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="isPalindrome() related tests">
+  @Test
+  fun `when even number of nodes which are palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(3)
+    dll.append(2)
+    dll.append(1)
+    Assertions.assertTrue(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when odd number of nodes which are palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(2)
+    dll.append(1)
+    Assertions.assertTrue(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when even number of nodes which are not palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(2)
+    dll.append(2)
+    dll.append(1)
+    Assertions.assertFalse(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when odd number of nodes which are not palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.append(3)
+    dll.append(3)
+    dll.append(1)
+    Assertions.assertFalse(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when there are only 2 nodes that are palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(1)
+    Assertions.assertTrue(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when there are only 2 nodes that are not palindrome`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(-1)
+    Assertions.assertFalse(dll.isPalindrome())
+  }
+
+  @Test
+  fun `when there is only 1 node`() {
+    val dll = DoublyLinkedList(1)
+    Assertions.assertTrue(dll.isPalindrome())
+  }
+  //</editor-fold>
+
+  //<editor-fold desc="swapPairs() related tests">
+  @Test
+  fun `when even number of nodes`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2).append(3).append(4).append(5).append(6)
+    dll.swapPairs()
+    Assertions.assertArrayEquals(intArrayOf(2, 1, 4, 3, 6, 5), dll.toArray())
+    Assertions.assertEquals(2, dll.head?.value)
+    Assertions.assertEquals(5, dll.tail?.value)
+  }
+
+  @Test
+  fun `when odd number of nodes`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2).append(3).append(4).append(5)
+    dll.swapPairs()
+    Assertions.assertArrayEquals(intArrayOf(2, 1, 4, 3, 5), dll.toArray())
+    Assertions.assertEquals(2, dll.head?.value)
+    Assertions.assertEquals(5, dll.tail?.value)
+  }
+
+  @Test
+  fun `when only 2 nodes`() {
+    val dll = DoublyLinkedList(1)
+    dll.append(2)
+    dll.swapPairs()
+    Assertions.assertArrayEquals(intArrayOf(2, 1), dll.toArray())
+    Assertions.assertEquals(2, dll.head?.value)
+    Assertions.assertEquals(1, dll.tail?.value)
+  }
+
+  @Test
+  fun `when is only 1 node`() {
+    val dll = DoublyLinkedList(1)
+    dll.swapPairs()
+    Assertions.assertArrayEquals(intArrayOf(1), dll.toArray())
+    Assertions.assertEquals(1, dll.head?.value)
+    Assertions.assertEquals(1, dll.tail?.value)
+  }
+  //</editor-fold>
+
 }
