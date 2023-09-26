@@ -10,7 +10,7 @@
 .dccache
 HELP.md
 .gradle
-build/
+build/*
 /gradlew.bat
 *.log
 logs/

@@ -1,7 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="DoublyLinkedListTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2023-09-23T11:18:01" hostname="MJ2X03L7F2" time="0.007">
+<testsuite name="DoublyLinkedListTest" tests="44" skipped="0" failures="0" errors="0" timestamp="2023-09-26T03:39:49" hostname="MJ2X03L7F2" time="0.024">
   <properties/>
-  <testcase name="remove out of range()" classname="DoublyLinkedListTest" time="0.007"/>
+  <testcase name="set with valid range()" classname="DoublyLinkedListTest" time="0.008"/>
+  <testcase name="removeFirst() when multiple nodes are present()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="when there is only 1 node()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="when even number of nodes which are not palindrome()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="prepend when head is not present()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="remove out of range()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="removeLast when only 1 node is in the list()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="exactly 2 nodes in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when there are exactly 2 nodes are in list()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="removeFirst() when only 2 nodes are present()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="append()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="removeLast when no nodes are in the lsit()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="insert at middle()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="more than 2 nodes in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="removeLast when more than 2 nodes in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when even number of nodes()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="when odd number of nodes which are palindrome()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="set with invalid range()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="get with index out of range()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="remove head()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="remove tail()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="removeLast when only 2 nodes are in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="insert at index 0()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="insert at index out of range()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="exactly 1 node in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when odd number of nodes which are not palindrome()" classname="DoublyLinkedListTest" time="0.001"/>
+  <testcase name="when there are only 2 nodes that are not palindrome()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when odd number of nodes()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="get with valid index within range()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="exactly no nodes in the list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when there are only 2 nodes that are palindrome()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="remove middle()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="append when null head and tail()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when is only 1 node()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when there is exactly 1 nodes are in list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="insert at index listLength()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when even number of nodes which are palindrome()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when more than 2 nodes are in list()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="get head()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="get tail()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="prepend when only head is and tail is not present()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="when only 2 nodes()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="prepend when different head and tail are present()" classname="DoublyLinkedListTest" time="0.0"/>
+  <testcase name="removeFirst() when only 1 node is present()" classname="DoublyLinkedListTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

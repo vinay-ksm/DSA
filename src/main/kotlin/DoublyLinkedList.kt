@@ -15,7 +15,7 @@ class DoublyLinkedList(value: Int?) {
   /**
    * appends a value to the end of list
    */
-  fun append(value: Int) {
+  fun append(value: Int): DoublyLinkedList {
     val node = DllNode(value = value, next = null, previous = tail)
     tail?.next = node
     tail = node
@@ -25,6 +25,7 @@ class DoublyLinkedList(value: Int?) {
     }
 
     listLength++
+    return this
   }
 
   /**
@@ -112,6 +113,9 @@ class DoublyLinkedList(value: Int?) {
     return true
   }
 
+  /**
+   * Method to insert a node at a particular index
+   */
   fun insert(value: Int, index: Int): Boolean {
     if (index < 0 || index > listLength) {
       return false
@@ -133,6 +137,9 @@ class DoublyLinkedList(value: Int?) {
     return true
   }
 
+  /**
+   * method to remove a node a particular index
+   */
   fun remove(index: Int): DllNode? {
     val node = getNode(index) ?: return null
 
@@ -152,6 +159,89 @@ class DoublyLinkedList(value: Int?) {
     return node
   }
 
+  /**
+   * method to simply swap first and last node within the list
+   */
+  fun swapFirstAndLast(): Boolean {
+    if (listLength < 2) {
+      return false
+    }
+
+    val headValue = head!!.value
+    head!!.value = tail!!.value
+    tail!!.value = headValue
+    return true
+  }
+
+  /**
+   * Method to reverse the list
+   */
+  fun reverse() {
+    if (listLength <= 1) {
+      return
+    }
+
+    var current = head
+    while (current != null) {
+      val nextNode = current.next
+      current.next = current.previous
+      current.previous = nextNode
+      current = nextNode
+    }
+
+    // Swap the head and tail pointers
+    val newHead = tail
+    tail = head
+    head = newHead
+  }
+
+  /**
+   * Collects all the values of nodes in the list and returns it as an array
+   */
+  fun toArray(): IntArray {
+    var output = IntArray(listLength)
+    var current = head
+    for (i in 0 until listLength) {
+      output[i] = current!!.value
+      current = current?.next
+    }
+    return output
+  }
+
+  /**
+   * method to check if list elements represent a palindrome
+   */
+  fun isPalindrome(): Boolean {
+    var forward = head
+    var backward = tail
+    for (i in 0 until (listLength / 2)) {
+      if (forward?.value != backward?.value) {
+        return false
+      }
+      forward = forward?.next
+      backward = backward?.previous
+    }
+
+    return true
+  }
+
+  /**
+   * Method to swap adjacent nodes
+   */
+  fun swapPairs() {
+    if (listLength < 2) {
+      return
+    }
+    var current = head
+    while (current != null && current?.next != null) {
+      val tempValue = current.value
+      current.value = current.next!!.value
+      current.next!!.value = tempValue
+      current = current.next?.next
+    }
+  }
+
+
   fun printList() {
     var current = head
     while (current != null) {
@@ -170,7 +260,8 @@ fun main() {
   val dll = DoublyLinkedList(1)
   dll.append(2)
   dll.append(3)
-  dll.remove(0)
+  dll.append(4)
+  dll.swapPairs()
   dll.printList()
 }
 
