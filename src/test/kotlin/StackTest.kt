@@ -13,7 +13,7 @@ internal class StackTest {
 
   @Test
   fun `push a new value on empty`() {
-    val stack = Stack(null)
+    val stack = Stack<Int>(null)
     stack.push(1)
     Assertions.assertEquals(1, stack.height)
     Assertions.assertEquals(1, stack.top?.value)
@@ -43,7 +43,7 @@ internal class StackTest {
 
   @Test
   fun `when no nodes in the stack`() {
-    val stack = Stack(null)
+    val stack = Stack<Int>(null)
     val result = stack.pop()
 
     Assertions.assertEquals(null, result?.value)
@@ -53,7 +53,7 @@ internal class StackTest {
   //</editor-fold>
 
   //<editor-fold desc="helpers">
-  private fun validStack(nodes: Int = 3): Stack {
+  private fun validStack(nodes: Int = 3): Stack<Int> {
     val stack = Stack(1)
     for (i in 2 until nodes + 1) {
       stack.push(i)

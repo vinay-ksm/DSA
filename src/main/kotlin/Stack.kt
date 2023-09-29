@@ -1,6 +1,8 @@
-class Stack(val value: Int?) {
+class Stack<T>(val value: T?) {
+  data class StackNode<T>(var value: T?, var next: StackNode<T>?)
+
   var height: Int = 0
-  var top: StackNode? = null
+  var top: StackNode<T>? = null
 
   init {
     val node = StackNode(value, null)
@@ -13,7 +15,7 @@ class Stack(val value: Int?) {
   /**
    * Method to push a node to the top of the stack
    */
-  fun push(value: Int): Stack {
+  fun push(value: T): Stack<T> {
     val node = StackNode(value, top)
     top = node
     height++
@@ -23,7 +25,7 @@ class Stack(val value: Int?) {
   /**
    * Method to pop top most node
    */
-  fun pop(): StackNode? {
+  fun pop(): StackNode<T>? {
     if (top == null) {
       return null
     }
@@ -45,11 +47,36 @@ class Stack(val value: Int?) {
   }
 }
 
-data class StackNode(var value: Int?, var next: StackNode?)
-
 fun main() {
-  val stack = Stack(1)
-  stack.push(2).push(3).push(4)
-  stack.pop()
-  stack.printStack()
+  var input = Stack(5)
+  input.push(4).push(3).push(1).push(2).push(10).push(6)
+  sortStack(input)
+}
+
+fun sortStack(original: Stack<Int>) {
+  if (original.height < 1) {
+    return
+  }
+  val sorted = Stack(original.pop()?.value)
+  while (original.height > 0) {
+    var popped = original.pop()!!.value!!
+    while (sorted.height > 0  && popped < sorted.top!!.value!!) {
+      original.push(sorted.pop()!!.value!!)
+    }
+    sorted.push(popped)
+  }
+  
+
+}
+
+fun isBalancedParentheses(str: String): Boolean? {
+  val s = Stack<Char>(null)
+  for (c in str.toCharArray()) {
+    if (c == '(') {
+      s.push(c)
+    } else {
+      val popped = s.pop() ?: return false
+    }
+  }
+  return s.height == 0
 }
