@@ -3,19 +3,20 @@
  * play.kotlinlang.org
  */
 fun main() {
-  val result = mirror("xawhfi vgfhyas uem olswayod pzawhzs ovxrpdg mcmf")
-  println(result)
+//  val result = PasswordHider.hidePasswordFromConnection("jdbc:mysql://sdasdasdasd:szdasdasd:dfsdfsdfsdf/sdfsdfsdf?user=root&password=12345&foo=bar")
+//  println(result)
 }
 
-fun mirror(text: String): String {
-  var result = ""
-  val words = text.split(" ")
-  val maxLen = (words.maxByOrNull { w -> w.length } ?: "").length
-  result += "*".repeat(maxLen + 4) + "\n"
-  words.map { w ->
-    result += "* ${w.reversed()}"
-    result += " ".repeat(maxLen + 1 - w.length) + "*\n"
-  }
-  result += "*".repeat(maxLen+4) + "\n"
-  return result
-}
+//object PasswordHider {
+//  fun hidePasswordFromConnection(urlString: String): String {
+//    val delimiter = "password="
+//    val (first, end) = urlString.split(delimiter, ignoreCase = true, limit = 2)
+//    var parts: List<String>? = null
+//    if(end.contains('&')){
+//      parts = end.split("&",limit=2)
+//    }
+//    val myRegex = Regex(".")
+//    return "$first$delimiter${second.replace(myRegex,"*")}$third"
+//  }
+//}
+
