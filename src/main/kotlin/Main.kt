@@ -3,20 +3,22 @@
  * play.kotlinlang.org
  */
 fun main() {
-//  val result = PasswordHider.hidePasswordFromConnection("jdbc:mysql://sdasdasdasd:szdasdasd:dfsdfsdfsdf/sdfsdfsdf?user=root&password=12345&foo=bar")
-//  println(result)
+  val result = litres(2.0)
+  println(result)
 }
 
-//object PasswordHider {
-//  fun hidePasswordFromConnection(urlString: String): String {
-//    val delimiter = "password="
-//    val (first, end) = urlString.split(delimiter, ignoreCase = true, limit = 2)
-//    var parts: List<String>? = null
-//    if(end.contains('&')){
-//      parts = end.split("&",limit=2)
-//    }
-//    val myRegex = Regex(".")
-//    return "$first$delimiter${second.replace(myRegex,"*")}$third"
-//  }
-//}
+fun litres(time: Double) = (time / 2).toInt()
 
+object Opstrings {
+
+  fun rot(strng: String) = strng.reversed()
+
+  fun selfieAndRot(strng: String): String {
+    val s1 = strng.split("\n").map { s -> "$s...." }.joinToString("\n")
+    return s1 + s1.reversed()
+  }
+
+  fun oper(operation: (String) -> String , s: String): String {
+    return operation(s)
+  }
+}
